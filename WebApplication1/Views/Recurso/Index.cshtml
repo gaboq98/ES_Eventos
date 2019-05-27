@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebApplication1.Models.Recurso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var num = ViewBag.Test;
+}
+
+<h2>Recursos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    Num: @num
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ubicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idTipoRecurso)
+        </th>
+        <th></th>
+    </tr>
+    @{ /*
+ @foreach (var item in Model) {
+     <tr>
+         <td>
+             @Html.DisplayFor(modelItem => item.nombre)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.correo)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.telefono)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.ubicacion)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.estado)
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.idTipoRecurso)
+         </td>
+         <td>
+             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+             @Html.ActionLink("Details", "Details", new { id=item.id }) |
+             @Html.ActionLink("Delete", "Delete", new { id=item.id })
+         </td>
+     </tr>
+ }
+ */}
+
+</table>

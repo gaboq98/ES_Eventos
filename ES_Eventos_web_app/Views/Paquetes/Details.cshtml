@@ -1,0 +1,45 @@
+﻿@model ES_Eventos_web_app.Models.Paquete
+
+<div>
+    <h4>Paquete</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<div class="d-flex justify-content-between">
+    <div class="p-2">
+        <p>
+            @Html.ActionLink("Regresar", "Index")
+        </p>
+    </div>
+    <div class="p-2">
+        <p>
+            @Html.ActionLink("Reservar", "Create", "Reservaciones", new { id=Model.id, paquete=Model.id}, new { @class = "btn btn-primary mr-1" })
+        </p>
+    </div>
+</div>
+

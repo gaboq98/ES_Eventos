@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ES_Eventos_web_app.Models.Paquete>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="pb-5">Paquetes disponibles</h2>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "Details", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

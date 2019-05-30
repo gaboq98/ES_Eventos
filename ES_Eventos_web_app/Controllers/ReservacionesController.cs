@@ -152,5 +152,14 @@ namespace ES_Eventos_web_app.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Reservaciones
+        public ActionResult Historial()
+        {
+            var reservacion = db.Reservacion.Include(r => r.Cliente).Include(r => r.Paquete);
+            var idRes = reservacion.Where(r => r.idCliente == 1); // aqui va el idCliente
+            return View(idRes.ToList());
+        }
+
     }
 }

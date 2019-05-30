@@ -270,6 +270,8 @@
     <Content Include="Views\Reservaciones\Details.cshtml" />
     <Content Include="Views\Reservaciones\Edit.cshtml" />
     <Content Include="Views\Reservaciones\Index.cshtml" />
+    <Content Include="Views\Paquetes\CrearReservacion.cshtml" />
+    <Content Include="Views\Reservaciones\Historial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

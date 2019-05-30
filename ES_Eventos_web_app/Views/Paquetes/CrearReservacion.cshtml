@@ -1,17 +1,18 @@
 ﻿@model ES_Eventos_web_app.Models.Reservacion
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "CrearReservacion";
 }
 
-<h2>Nueva</h2>
+<h2>CrearReservacion</h2>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Reservación</h4>
+        <h4>Reservacion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -23,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idCliente, "idCliente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idCliente", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idCliente, "", new { @class = "text-danger" })
@@ -31,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idPaquete, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idPaquete, "idPaquete", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idPaquete", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idPaquete, "", new { @class = "text-danger" })
@@ -39,8 +40,8 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 p-4">
-                <input class="btn btn-primary mr-1" type="submit" value="Crear" />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -50,7 +51,7 @@
     <p class="p-3">
         @using (Html.BeginForm("Index", "Reservaciones", new { id = 1 }))
         {
-        <button type="submit" class="btn btn-primary mr-1">Volver</button>
+            <button type="submit" class="btn btn-primary mr-1">Volver</button>
         }
     </p>
 </div>

@@ -13,11 +13,11 @@
                 <div class="p-2 text-center">
                     @using (Html.BeginForm("OpenReservaciones", "Home"))
                     {
-                        <button type="submit" class="btn btn-primary mr-1 " style="width:300px;">Modificar reservacion</button>
+                        <button type="submit" class="btn btn-primary mr-1 " style="width:300px;">Reservaciones</button>
                     }
                 </div>
                 <div class="p-2 text-center">
-                    @using (Html.BeginForm("Index", "Reservaciones"))
+                    @using (Html.BeginForm("Historial", "Reservaciones"))
                     {
                         <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Historial de reservaciones</button>
                     }

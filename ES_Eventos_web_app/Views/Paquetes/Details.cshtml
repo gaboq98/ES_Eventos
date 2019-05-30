@@ -33,13 +33,14 @@
 <div class="d-flex justify-content-between">
     <div class="p-2">
         <p>
-            @Html.ActionLink("Regresar", "Index")
+            @Html.ActionLink("Volver", "Index")
         </p>
     </div>
     <div class="p-2">
-        <p>
-            @Html.ActionLink("Reservar", "Create", "Reservaciones", new { id=Model.id, paquete=Model.id}, new { @class = "btn btn-primary mr-1" })
-        </p>
+        @using (Html.BeginForm("Details", "Paquetes", new { idP =  Model.id}))
+        {
+            <button type="submit" class="btn btn-primary mr-1">Reservar</button>
+        }
     </div>
 </div>
 

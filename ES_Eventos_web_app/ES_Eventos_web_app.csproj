@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaquetesController.cs" />
     <Compile Include="Controllers\ReservacionesController.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Views\Reservaciones\Index.cshtml" />
     <Content Include="Views\Paquetes\CrearReservacion.cshtml" />
     <Content Include="Views\Reservaciones\Historial.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ES_Eventos_web_app.Models;
@@ -111,6 +112,17 @@ namespace ES_Eventos_web_app.Controllers
             {
                 db.Entry(reservacion).State = EntityState.Modified;
                 db.SaveChanges();
+                // Send email
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("eseventos420@gmail.com");
+                mail.To.Add(db.Cliente.Find( reservacion.idCliente).correo);
+                mail.Subject = "Modificacion de reservacion";
+                mail.Body = "OK";
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("eseventos420@gmail.com", "reque.420");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
                 return RedirectToAction("Index");
             }
             ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);

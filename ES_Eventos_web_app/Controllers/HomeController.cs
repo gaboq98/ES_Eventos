@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,6 +17,7 @@ namespace ES_Eventos_web_app.Controllers
         [HttpPost]
         public ActionResult OpenReservaciones()
         {
+            
             return RedirectToAction("Index", "Reservaciones", new { id = 1 });
         }
 

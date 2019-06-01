@@ -130,6 +130,7 @@ namespace ES_Eventos_web_app.Controllers
             return View(reservacion);
         }
 
+
         // GET: Reservaciones/Delete/5
         public ActionResult Delete(int? id)
         {

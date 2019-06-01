@@ -156,6 +156,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
+    <Compile Include="Controllers\AdministradoresController.cs" />
+    <Compile Include="Controllers\AdminResursosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaquetesController.cs" />
     <Compile Include="Controllers\ReservacionesController.cs" />
@@ -318,6 +320,16 @@
     <Content Include="Views\Paquetes\CrearReservacion.cshtml" />
     <Content Include="Views\Reservaciones\Historial.cshtml" />
     <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminResursos\Create.cshtml" />
+    <Content Include="Views\AdminResursos\Delete.cshtml" />
+    <Content Include="Views\AdminResursos\Details.cshtml" />
+    <Content Include="Views\AdminResursos\Edit.cshtml" />
+    <Content Include="Views\AdminResursos\Index.cshtml" />
+    <Content Include="Views\Administradores\Create.cshtml" />
+    <Content Include="Views\Administradores\Delete.cshtml" />
+    <Content Include="Views\Administradores\Details.cshtml" />
+    <Content Include="Views\Administradores\Edit.cshtml" />
+    <Content Include="Views\Administradores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

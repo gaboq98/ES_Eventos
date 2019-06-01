@@ -10,21 +10,21 @@
             <div class="col-12">
                 <h1 class="display-4 text-center pb-5">Bienvenido</h1>
                 <div class="p-2 text-center">
-                    @using (Html.BeginForm("Index", "Paquetes"))
+                    @using (Html.BeginForm("Index", "AdminResursos"))
                     {
-                        <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Ver paquetes</button>
+                        <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Resursos</button>
                     }
                 </div>
                 <div class="p-2 text-center">
-                    @using (Html.BeginForm("OpenReservaciones", "Home"))
+                    @using (Html.BeginForm("Index", "AdminResursos"))
                     {
-                        <button type="submit" class="btn btn-primary mr-1 " style="width:300px;">Reservaciones</button>
+                        <button type="submit" class="btn btn-primary mr-1 " style="width:300px;">Paquetes</button>
                     }
                 </div>
                 <div class="p-2 text-center">
-                    @using (Html.BeginForm("Historial", "Reservaciones"))
+                    @using (Html.BeginForm("Index", "Administradores"))
                     {
-                        <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Historial de reservaciones</button>
+                        <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Administradores</button>
                     }
                 </div>
             </div>

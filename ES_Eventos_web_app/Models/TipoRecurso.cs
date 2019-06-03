@@ -11,7 +11,8 @@ namespace ES_Eventos_web_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TipoRecurso
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,11 @@ namespace ES_Eventos_web_app.Models
         }
     
         public int id { get; set; }
-        public string descripcion { get; set; }
+        [DisplayName("Tipo de Recurso")]
+        public string descripcion {
+            get;
+            set;
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recurso> Recurso { get; set; }

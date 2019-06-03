@@ -11,7 +11,8 @@ namespace ES_Eventos_web_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Recurso
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +22,17 @@ namespace ES_Eventos_web_app.Models
         }
     
         public int id { get; set; }
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Correo")]
         public string correo { get; set; }
+        [DisplayName("Telefono")]
         public string telefono { get; set; }
+        [DisplayName("Ubicación")]
         public string ubicacion { get; set; }
+        [DisplayName("Estado")]
         public string estado { get; set; }
+        [DisplayName("Tipo de Recurso")]
         public int idTipoRecurso { get; set; }
     
         public virtual TipoRecurso TipoRecurso { get; set; }

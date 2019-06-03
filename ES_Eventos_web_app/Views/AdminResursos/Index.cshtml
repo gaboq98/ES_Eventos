@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Recursos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,11 +53,19 @@
             @Html.DisplayFor(modelItem => item.TipoRecurso.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    <p class="p-3">
+        @using (Html.BeginForm("Index", "AdminHome", new { id = 1 }))
+        {
+            <button type="submit" class="btn btn-primary mr-1">Volver</button>
+        }
+    </p>
+</div>

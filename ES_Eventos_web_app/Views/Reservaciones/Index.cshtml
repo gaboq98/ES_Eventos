@@ -43,8 +43,12 @@
         </tr>
     }
 </table>
+
 <div>
     <p class="p-3">
-        @Html.ActionLink("Volver", "Index", "Home")
+        @using (Html.BeginForm("Index", "Home", new { id = 1 }))
+        {
+            <button type="submit" class="btn btn-primary mr-1">Volver</button>
+        }
     </p>
 </div>

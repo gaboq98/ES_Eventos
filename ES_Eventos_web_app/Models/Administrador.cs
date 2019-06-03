@@ -11,14 +11,19 @@ namespace ES_Eventos_web_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Administrador
     {
         public int id { get; set; }
+        [DisplayName("Nombre")]
         public string nombre { get; set; }
+        [DisplayName("Cedula")]
         public decimal cedula { get; set; }
+        [DisplayName("Correo")]
         public string correo { get; set; }
         public string contrsena { get; set; }
+        [DisplayName("Estado")]
         public string estado { get; set; }
     }
 }

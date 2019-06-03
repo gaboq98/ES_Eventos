@@ -19,8 +19,22 @@ namespace ES_Eventos_web_app.Controllers
         // GET: Paquetes
         public ActionResult Index()
         {
-            ViewBag.ID = 1;
-            return View(db.Paquete.ToList());
+            ViewBag.recursos = db.TipoRecurso.ToList();
+            var paquete = //db.Paquete.Include(p => p.RecursoXPaquete);
+                from p in db.Paquete
+                from rxp in db.RecursoXPaquete
+                from r in db.Recurso
+                where p.id == rxp.idPaquete
+                where rxp.idRecurso == r.id
+                select new PaqueteHolder
+                {
+                    id = p.id,
+                    nombre = p.nombre,
+                    precio = p.precio,
+                    descripcion = p.descripcion,
+                    idTipoRecurso = r.idTipoRecurso
+                };
+            return View(paquete.ToList());
         }
 
         // GET: Paquetes/Details/5

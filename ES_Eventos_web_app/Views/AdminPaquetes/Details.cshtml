@@ -1,5 +1,11 @@
 ﻿@model ES_Eventos_web_app.Models.Paquete
 
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
 <div>
     <h4>Paquete</h4>
     <hr />
@@ -30,20 +36,7 @@
 
     </dl>
 </div>
-<div class="d-flex justify-content-between">
-    <div class="p-2">
-            <p class="p-3">
-                @using (Html.BeginForm("Index", "Paquetes", new { id = 1 }))
-                {
-                    <button type="submit" class="btn btn-primary mr-1">Volver</button>
-                }
-            </p>
-    </div>
-    <div class="p-2">
-        @using (Html.BeginForm("Details", "Paquetes", new { idP =  Model.id}))
-        {
-            <button type="submit" class="btn btn-primary mr-1">Reservar</button>
-        }
-    </div>
-</div>
-
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

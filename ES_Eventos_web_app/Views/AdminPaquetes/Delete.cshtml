@@ -1,4 +1,4 @@
-﻿@model ES_Eventos_web_app.Models.Administrador
+﻿@model ES_Eventos_web_app.Models.Paquete
 
 @{
     ViewBag.Title = "Delete";
@@ -7,7 +7,7 @@
 <h2>Eliminar</h2>
 
 <div>
-    <h4>Administrador</h4>
+    <h4>Paquete</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,35 +19,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cedula)
+            @Html.DisplayNameFor(model => model.precio)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cedula)
+            @Html.DisplayFor(model => model.precio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.correo)
+            @Html.DisplayNameFor(model => model.descripcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.correo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.contrsena)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.contrsena)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.estado)
+            @Html.DisplayFor(model => model.descripcion)
         </dd>
 
     </dl>

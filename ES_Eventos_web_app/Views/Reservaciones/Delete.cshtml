@@ -4,9 +4,8 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Reservacion</h4>
     <hr />
@@ -42,7 +41,14 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
         </div>
     }
+</div>
+<div>
+    <p class="p-3">
+        @using (Html.BeginForm("Index", "Reservaciones", new { id = 1 }))
+        {
+            <button type="submit" class="btn btn-primary mr-1">Volver</button>
+        }
+    </p>
 </div>

@@ -11,11 +11,14 @@ namespace ES_Eventos_web_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class RecursoXPaquete
     {
         public int id { get; set; }
+        [DisplayName("Paquete")]
         public int idPaquete { get; set; }
+        [DisplayName("Recurso")]
         public int idRecurso { get; set; }
     
         public virtual Paquete Paquete { get; set; }

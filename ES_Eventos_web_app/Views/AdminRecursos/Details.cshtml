@@ -60,6 +60,13 @@
 
     </dl>
 </div>
+<div class="d-flex justify-content-end">
+    <div class="p-2">
+        <p>
+            @Html.ActionLink("Agregar Paquete", "Create", "RecursoXPaquetes", new { idR = Model.id }, new {@class = "btn btn-success mr-1"})
+        </p>
+    </div>
+</div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Volver", "Index")

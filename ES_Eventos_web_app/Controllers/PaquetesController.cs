@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ES_Eventos_web_app.Models;
@@ -68,7 +69,7 @@ namespace ES_Eventos_web_app.Controllers
         {
             List<object> list = new List<object>
             {
-                db.Cliente.Find(1)
+                db.Cliente.Find(1) /*aqui va el idCliente */
             };
             IEnumerable<object> en = list;
             ViewBag.idCliente = new SelectList(en, "id", "nombre");
@@ -83,16 +84,38 @@ namespace ES_Eventos_web_app.Controllers
             return View();
         }
 
-        /*
         [HttpPost]
-        public ActionResult CrearReservacion()
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearReservacion([Bind(Include = "id,fecha,idCliente,idPaquete")] Reservacion reservacion)
         {
-            if (paquete == null)
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Reservacion.Add(reservacion);
+                db.SaveChanges();
+                // Send email
+                var paq = db.Paquete.Find(reservacion.idPaquete);
+                SendMail("Creación de reserva", "Se creaó con exito la reservación del paquete " + paq.nombre + ", el día " + DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss"));
+
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Create", "Reservaciones", new { id = 1, paquete=paquete});
+
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);
+            ViewBag.idPaquete = new SelectList(db.Paquete, "id", "nombre", reservacion.idPaquete);
+            return View(reservacion);
         }
-        */
+
+        private void SendMail(string subject, string body)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("eseventos420@gmail.com");
+            mail.To.Add(db.Cliente.Find(1 /*aqui va el idCliente */).correo);
+            mail.Subject = subject;
+            mail.Body = body;
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("eseventos420@gmail.com", "reque.420");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+        }
     }
 }

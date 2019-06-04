@@ -7,41 +7,17 @@
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        .App-logo {
-            animation: App-logo-spin infinite 0.9s linear;
-            height: 10vmin;
-            pointer-events: none;
-        }
-        .App-logo-inverse {
-            animation: App-logo-spin infinite 0.9s linear;
-            height: 10vmin;
-            pointer-events: none;
-        }
-        @@keyframes App-logo-spin {
-            from {
-                transform: rotate(0deg);
-            }
 
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        @@keyframes App-logo-spin-inverse {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 </head>
 <body style="padding-top: 125px;">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" id="navbar1">
         <div class="container">
-            <img type="submit" class="img" style="width:85px;height:85px;" src="~/res/icon.jpeg" alt="Logo">
+            <div class="navbar-header">
+                <img type="submit" class="img" style="width:85px;height:85px;" src="~/res/icon.jpeg" alt="Logo">
+            </div>
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </nav>
     <div class="container body-content">

@@ -8,6 +8,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ES_Eventos_web_app.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ES_Eventos_web_app.Controllers
 {
@@ -178,7 +180,10 @@ namespace ES_Eventos_web_app.Controllers
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             mail.From = new MailAddress("eseventos420@gmail.com");
-            mail.To.Add(db.Cliente.Find(1 /*aqui va el idCliente */).correo);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+            .GetUserManager<ApplicationUserManager>()
+            .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            mail.To.Add(user.Email);
             mail.Subject = subject;
             mail.Body = body;
             SmtpServer.Port = 587;

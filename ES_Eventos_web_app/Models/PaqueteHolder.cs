@@ -15,15 +15,20 @@ namespace ES_Eventos_web_app.Models
             this.Reservacion = new HashSet<Reservacion>();
         }
 
-        public int id { get; set; }
+        public int pId { get; set; }
         [DisplayName("Nombre")]
-        public string nombre { get; set; }
+        public string pNombre { get; set; }
         [DisplayName("Precio")]
-        public decimal precio { get; set; }
+        public decimal pPrecio { get; set; }
         [DisplayName("Descripción")]
-        public string descripcion { get; set; }
-
-        public int idTipoRecurso { get; set; }
+        public string pDescripcion { get; set; }
+        public int rId { get; set; }
+        public string rNombre { get; set; }
+        public string rCorreo { get; set; }
+        public string rTelefono { get; set; }
+        public string rUbicacion { get; set; }
+        public string rEstado { get; set; }
+        public int rTipo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RecursoXPaquete> RecursoXPaquete { get; set; }

@@ -10,7 +10,7 @@
             <div class="col-12">
                 <h1 class="display-4 text-center pb-5">Bienvenido</h1>
                 <div class="p-2 text-center">
-                    @using (Html.BeginForm("Index", "AdminResursos"))
+                    @using (Html.BeginForm("Index", "AdminRecursos"))
                     {
                         <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Resursos</button>
                     }
@@ -19,6 +19,12 @@
                     @using (Html.BeginForm("Index", "AdminPaquetes"))
                     {
                         <button type="submit" class="btn btn-primary mr-1 " style="width:300px;">Paquetes</button>
+                    }
+                </div>
+                <div class="p-2 text-center">
+                    @using (Html.BeginForm("Index", "AdminReservaciones"))
+                    {
+                        <button type="submit" class="btn btn-primary mr-1" style="width:300px;">Reservaciones</button>
                     }
                 </div>
                 <div class="p-2 text-center">

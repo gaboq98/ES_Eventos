@@ -33,7 +33,7 @@
 <div class="d-flex justify-content-between">
     <div class="p-2">
             <p class="p-3">
-                @using (Html.BeginForm("Index", "Paquetes", new { id = 1 }))
+                @using (Html.BeginForm("Index", "Paquetes"))
                 {
                     <button type="submit" class="btn btn-primary mr-1">Volver</button>
                 }
@@ -42,7 +42,7 @@
     <div class="p-2">
         @using (Html.BeginForm("Details", "Paquetes", new { idP =  Model.id}))
         {
-            <button type="submit" class="btn btn-primary mr-1">Reservar</button>
+            <button type="submit" class="btn btn-success mr-1">Reservar</button>
         }
     </div>
 </div>

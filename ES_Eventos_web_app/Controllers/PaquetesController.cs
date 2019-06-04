@@ -28,11 +28,17 @@ namespace ES_Eventos_web_app.Controllers
                 where rxp.idRecurso == r.id
                 select new PaqueteHolder
                 {
-                    id = p.id,
-                    nombre = p.nombre,
-                    precio = p.precio,
-                    descripcion = p.descripcion,
-                    idTipoRecurso = r.idTipoRecurso
+                    pId = p.id,
+                    pNombre = p.nombre,
+                    pPrecio = p.precio,
+                    pDescripcion = p.descripcion,
+                    rId = r.id,
+                    rNombre = r.nombre,
+                    rCorreo = r.correo,
+                    rTelefono = r.telefono,
+                    rUbicacion = r.ubicacion,
+                    rEstado = r.estado,
+                    rTipo = r.idTipoRecurso
                 };
             return View(paquete.ToList());
         }

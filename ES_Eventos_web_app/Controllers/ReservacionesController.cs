@@ -76,6 +76,10 @@ namespace ES_Eventos_web_app.Controllers
             {
                 db.Reservacion.Add(reservacion);
                 db.SaveChanges();
+                // Send email
+                var paq = db.Paquete.Find(reservacion.idPaquete);
+                SendMail("Creación de reserva", "Se creaó con exito la reservación del paquete " + paq.nombre + ", el día " + DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss"));
+
                 return RedirectToAction("Index");
             }
 
@@ -113,16 +117,8 @@ namespace ES_Eventos_web_app.Controllers
                 db.Entry(reservacion).State = EntityState.Modified;
                 db.SaveChanges();
                 // Send email
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("eseventos420@gmail.com");
-                mail.To.Add(db.Cliente.Find( reservacion.idCliente).correo);
-                mail.Subject = "Modificacion de reservacion";
-                mail.Body = "OK";
-                SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("eseventos420@gmail.com", "reque.420");
-                SmtpServer.EnableSsl = true;
-                SmtpServer.Send(mail);
+                var paq = db.Paquete.Find(reservacion.idPaquete);
+                SendMail("Modificación de reserva", "Se modificó con exito la reservación del paquete " + paq.nombre + ", el día " + DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss"));
                 return RedirectToAction("Index");
             }
             ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);
@@ -154,6 +150,9 @@ namespace ES_Eventos_web_app.Controllers
             Reservacion reservacion = db.Reservacion.Find(id);
             db.Reservacion.Remove(reservacion);
             db.SaveChanges();
+            // Send email
+            var paq = db.Paquete.Find(reservacion.idPaquete);
+            SendMail("Eliminación de reserva", "Se eliminó con exito la reservación del paquete " + paq.nombre + ", el día " + DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss"));
             return RedirectToAction("Index");
         }
 
@@ -172,6 +171,20 @@ namespace ES_Eventos_web_app.Controllers
             var reservacion = db.Reservacion.Include(r => r.Cliente).Include(r => r.Paquete);
             var idRes = reservacion.Where(r => r.idCliente == 1); // aqui va el idCliente
             return View(idRes.ToList());
+        }
+
+        private void SendMail(string subject, string body)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mail.From = new MailAddress("eseventos420@gmail.com");
+            mail.To.Add(db.Cliente.Find(1 /*aqui va el idCliente */).correo);
+            mail.Subject = subject;
+            mail.Body = body;
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("eseventos420@gmail.com", "reque.420");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
         }
 
     }

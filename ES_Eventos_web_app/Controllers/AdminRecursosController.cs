@@ -10,7 +10,7 @@ using ES_Eventos_web_app.Models;
 
 namespace ES_Eventos_web_app.Controllers
 {
-    public class AdminResursosController : Controller
+    public class AdminRecursosController : Controller
     {
         private esEventosEntities db = new esEventosEntities();
 

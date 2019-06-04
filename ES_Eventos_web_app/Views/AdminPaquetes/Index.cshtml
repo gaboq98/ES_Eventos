@@ -4,59 +4,66 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Paquetes</h2>
+<h2 class="pb-3">Paquetes</h2>
 
-<p>
+<p class="pb-2">
     @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.pNombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.precio)
+            @Html.DisplayNameFor(model => model.pPrecio)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descripcion)
+            @Html.DisplayNameFor(model => model.pDescripcion)
         </th>
         <th></th>
     </tr>
 @{
     IEnumerable<ES_Eventos_web_app.Models.TipoRecurso> r = ViewBag.recursos;
-    foreach (var recurso in r)
+    foreach (var recurso in Model)
     {
     <tr class="table-primary">
         <td>
-            @recurso.descripcion.ToUpper()
+            @Html.DisplayFor(modelItem => recurso.rNombre)
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            @using (Html.BeginForm("Details", "AdminRecursos", new { id = recurso.rId }))
+            {
+                <button type="submit" class="btn btn-info btn-sm mr-1">Información</button>
+            }
+        </td>
     </tr>
 
         foreach (var item in Model)
         {
-
-            if (item.idTipoRecurso == recurso.id)
+            if (item.rId == recurso.rId)
             {
                 <tr>
                     <td></td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.nombre)
+                        @Html.DisplayFor(modelItem => item.pNombre)
                     </td>
                     <td>
-                        $@Html.DisplayFor(modelItem => item.precio)
+                        $@Html.DisplayFor(modelItem => item.pPrecio)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.descripcion)
+                        @Html.DisplayFor(modelItem => item.pDescripcion)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
+                        @Html.ActionLink("Editar", "Edit", new { id = item.pId }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.pId }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.pId })
                     </td>
                 </tr>
             }
@@ -67,7 +74,7 @@
 </table>
 <div>
     <p class="p-3">
-        @using (Html.BeginForm("Index", "AdminHome", new { id = 1 }))
+        @using (Html.BeginForm("Index", "AdminHome"))
         {
             <button type="submit" class="btn btn-primary mr-1">Volver</button>
         }

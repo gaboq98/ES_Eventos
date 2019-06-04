@@ -1,27 +1,24 @@
-﻿@model IEnumerable<ES_Eventos_web_app.Models.Administrador>
+﻿@model IEnumerable<ES_Eventos_web_app.Models.Reservacion>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2 class="pb-3">Administradores</h2>
+<h2>Reservaciones</h2>
 
-<p class="pb-2">
+<p>
     @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            @Html.DisplayNameFor(model => model.fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cedula)
+            @Html.DisplayNameFor(model => model.Cliente.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.correo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
+            @Html.DisplayNameFor(model => model.Paquete.nombre)
         </th>
         <th></th>
     </tr>
@@ -29,16 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.nombre)
+            @Html.DisplayFor(modelItem => item.fecha)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cedula)
+            @Html.DisplayFor(modelItem => item.Cliente.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.correo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
+            @Html.DisplayFor(modelItem => item.Paquete.nombre)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.id }) |

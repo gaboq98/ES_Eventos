@@ -10,128 +10,116 @@ using ES_Eventos_web_app.Models;
 
 namespace ES_Eventos_web_app.Controllers
 {
-    public class AdminPaquetesController : Controller
+    public class AdminReservacionesController : Controller
     {
         private esEventosEntities db = new esEventosEntities();
 
-        // GET: AdminPaquetes
+        // GET: AdminReservaciones
         public ActionResult Index()
         {
-            ViewBag.recursos = db.TipoRecurso.ToList();
-            var paquete = //db.Paquete.Include(p => p.RecursoXPaquete);
-                from p in db.Paquete
-                from rxp in db.RecursoXPaquete
-                from r in db.Recurso
-                where p.id == rxp.idPaquete
-                where rxp.idRecurso == r.id
-                select new PaqueteHolder
-                {
-                    pId = p.id,
-                    pNombre = p.nombre,
-                    pPrecio = p.precio,
-                    pDescripcion = p.descripcion,
-                    rId = r.id,
-                    rNombre = r.nombre,
-                    rCorreo = r.correo,
-                    rTelefono = r.telefono,
-                    rUbicacion = r.ubicacion,
-                    rEstado = r.estado,
-                    rTipo = r.idTipoRecurso
-                };
-            return View(paquete.ToList());
+            var reservacion = db.Reservacion.Include(r => r.Cliente).Include(r => r.Paquete);
+            return View(reservacion.ToList());
         }
 
-        // GET: AdminPaquetes/Details/5
+        // GET: AdminReservaciones/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Paquete paquete = db.Paquete.Find(id);
-            if (paquete == null)
+            Reservacion reservacion = db.Reservacion.Find(id);
+            if (reservacion == null)
             {
                 return HttpNotFound();
             }
-            return View(paquete);
+            return View(reservacion);
         }
 
-        // GET: AdminPaquetes/Create
+        // GET: AdminReservaciones/Create
         public ActionResult Create()
         {
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre");
+            ViewBag.idPaquete = new SelectList(db.Paquete, "id", "nombre");
             return View();
         }
 
-        // POST: AdminPaquetes/Create
+        // POST: AdminReservaciones/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nombre,precio,descripcion")] Paquete paquete)
+        public ActionResult Create([Bind(Include = "id,fecha,idCliente,idPaquete")] Reservacion reservacion)
         {
             if (ModelState.IsValid)
             {
-                db.Paquete.Add(paquete);
+                db.Reservacion.Add(reservacion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(paquete);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);
+            ViewBag.idPaquete = new SelectList(db.Paquete, "id", "nombre", reservacion.idPaquete);
+            return View(reservacion);
         }
 
-        // GET: AdminPaquetes/Edit/5
+        // GET: AdminReservaciones/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Paquete paquete = db.Paquete.Find(id);
-            if (paquete == null)
+            Reservacion reservacion = db.Reservacion.Find(id);
+            if (reservacion == null)
             {
                 return HttpNotFound();
             }
-            return View(paquete);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);
+            ViewBag.idPaquete = new SelectList(db.Paquete, "id", "nombre", reservacion.idPaquete);
+            return View(reservacion);
         }
 
-        // POST: AdminPaquetes/Edit/5
+        // POST: AdminReservaciones/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nombre,precio,descripcion")] Paquete paquete)
+        public ActionResult Edit([Bind(Include = "id,fecha,idCliente,idPaquete")] Reservacion reservacion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(paquete).State = EntityState.Modified;
+                db.Entry(reservacion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(paquete);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombre", reservacion.idCliente);
+            ViewBag.idPaquete = new SelectList(db.Paquete, "id", "nombre", reservacion.idPaquete);
+            return View(reservacion);
         }
 
-        // GET: AdminPaquetes/Delete/5
+        // GET: AdminReservaciones/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Paquete paquete = db.Paquete.Find(id);
-            if (paquete == null)
+            Reservacion reservacion = db.Reservacion.Find(id);
+            if (reservacion == null)
             {
                 return HttpNotFound();
             }
-            return View(paquete);
+            return View(reservacion);
         }
 
-        // POST: AdminPaquetes/Delete/5
+        // POST: AdminReservaciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Paquete paquete = db.Paquete.Find(id);
-            db.Paquete.Remove(paquete);
+            Reservacion reservacion = db.Reservacion.Find(id);
+            db.Reservacion.Remove(reservacion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -130,9 +130,15 @@ namespace ES_Eventos_web_app.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            /*
             Paquete paquete = db.Paquete.Find(id);
             db.Paquete.Remove(paquete);
+            
+            RecursoXPaquete recursoXPaquete = db.RecursoXPaquete.Find(id);
+            db.RecursoXPaquete.Remove(recursoXPaquete);
+
             db.SaveChanges();
+            */
             return RedirectToAction("Index");
         }
 

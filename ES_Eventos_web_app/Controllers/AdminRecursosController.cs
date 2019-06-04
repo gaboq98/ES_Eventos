@@ -114,9 +114,11 @@ namespace ES_Eventos_web_app.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            /*
             Recurso recurso = db.Recurso.Find(id);
             db.Recurso.Remove(recurso);
             db.SaveChanges();
+            */
             return RedirectToAction("Index");
         }
 
